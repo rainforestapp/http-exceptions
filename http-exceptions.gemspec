@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Http::Exceptions::VERSION
   spec.authors       = ["Simon Mathieu"]
   spec.email         = ["simon.math@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{An easy way to rescue exceptions that might be thrown by your Http library}
+  spec.description   = %q{An easy way to rescue exceptions that might be thrown by your Http library}
   spec.homepage      = ""
   spec.license       = "MIT"
 
