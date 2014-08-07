@@ -26,7 +26,7 @@ Only rescue raised exceptions.
 
 ```ruby
 Http::Exceptions.wrap_exception do
-  Httparty.get "http://www.google.com"
+  HTTParty.get "http://www.google.com"
 end
 ```
 
@@ -34,7 +34,7 @@ Raise an exception is the return code of the API call is not `2XX`.
 
 ```ruby
 Http::Exceptions.wrap_and_check do
-  Httparty.get "http://www.google.com"
+  HTTParty.get "http://www.google.com"
 end
 ```
 
@@ -43,7 +43,7 @@ You can then rescue the exception in the following way:
 ```ruby
 begin
   Http::Exceptions.wrap_and_check do
-    Httparty.get "http://www.google.com"
+    HTTParty.get "http://www.google.com"
   end
   rescue Http::Exceptions::HttpException => e
   end
