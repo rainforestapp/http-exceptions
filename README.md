@@ -52,11 +52,11 @@ end
 
 ### Support
 
-Currently, this only has been tested with HTTP party. It should however work with any library that delegates to the ruby http library.
+Currently, this only has been tested with HTTParty. It should however work with any library that delegates to the ruby http library.
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/http-exceptions/fork )
+1. Fork it ( https://github.com/rainforestapp/http-exceptions/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
