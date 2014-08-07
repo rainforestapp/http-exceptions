@@ -19,12 +19,12 @@ module Http
       begin
         yield
       rescue *Exceptions::EXCEPTIONS => e
-        raise self.new original_exception: e
+        raise HttpException.new original_exception: e
       end
     end
 
     def self.check_response!(res)
-      raise self.new(response: res) unless (200...300).include?(res.code)
+      raise HttpException.new(response: res) unless (200...300).include?(res.code)
       res
     end
 
