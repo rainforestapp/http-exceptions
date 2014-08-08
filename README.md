@@ -30,7 +30,7 @@ Http::Exceptions.wrap_exception do
 end
 ```
 
-Raise an exception is the return code of the API call is not `2XX`.
+Raise an exception if the return code of the API call is not `2XX`.
 
 ```ruby
 Http::Exceptions.wrap_and_check do
