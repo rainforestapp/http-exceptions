@@ -12,7 +12,8 @@ module Http
       Errno::ECONNREFUSED,
       Errno::EHOSTDOWN,
       Errno::ECONNRESET,
-      OpenSSL::SSL::SSLError
+      OpenSSL::SSL::SSLError,
+      EOFError,
     ].freeze
 
     def self.wrap_exception
