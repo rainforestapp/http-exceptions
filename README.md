@@ -45,8 +45,8 @@ begin
   response = Http::Exceptions.wrap_and_check do
     HTTParty.get "http://www.google.com"
   end
-  rescue Http::Exceptions::HttpException => e
-  end
+rescue Http::Exceptions::HttpException => e
+  # ...
 end
 ```
 
