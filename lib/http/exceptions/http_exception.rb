@@ -3,7 +3,7 @@ module Http
     class HttpException < RuntimeError
       attr_reader :response, :original_exception
 
-      def initialize(original_exception, response)
+      def initialize(original_exception=nil, response=nil)
         @response = response
         @original_exception = original_exception
         msg = "An error as occured while processing response."
