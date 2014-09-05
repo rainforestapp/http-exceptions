@@ -6,8 +6,8 @@ module Http
     EXCEPTIONS = [
       SocketError,
       Errno::ETIMEDOUT,
-      Net::ReadTimeout,
-      Net::OpenTimeout,
+      (Net.const_defined?(:ReadTimeout) ? Net::ReadTimeout : EOFError),
+      (Net.const_defined?(:OpenTimeout) ? Net::ReadTimeout : EOFError),
       Net::ProtocolError,
       Errno::ECONNREFUSED,
       Errno::EHOSTDOWN,
