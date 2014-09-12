@@ -16,6 +16,16 @@ describe Http::Exceptions do
       end.to raise_error(Http::Exceptions::HttpException)
     end
 
+    it "saves the original exception against the HttpException" do
+      begin
+        described_class.wrap_exception do
+          raise SocketError
+        end
+      rescue Http::Exceptions::HttpException => e
+        expect(e.original_exception).to be_a(SocketError)
+      end
+    end
+
     it "ignores other exceptions" do
       expect do
         described_class.wrap_exception do
@@ -30,6 +40,14 @@ describe Http::Exceptions do
       expect do
         described_class.check_response!(invalid_response)
       end.to raise_error(Http::Exceptions::HttpException)
+    end
+
+    it "the raised exception contains the response" do
+      begin
+        described_class.check_response!(invalid_response)
+      rescue Http::Exceptions::HttpException => e
+        expect(e.response).to eq(invalid_response)
+      end
     end
 
     it "returns the response on valid response" do
