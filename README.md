@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rainforestapp/http-exceptions.png?branch=master)](https://travis-ci.org/rainforestapp/http-exceptions)
+
 # Http::Exceptions
 
 Http::Exceptions provides an easy way to rescue exceptions that might be thrown by your Http library.
