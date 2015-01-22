@@ -1,1 +1,1 @@
-rvm use 2.1.2@http-exceptions --create
+rvm use 2.2.0@http-exceptions --create
