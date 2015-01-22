@@ -7,7 +7,7 @@ module Http
       SocketError,
       Errno::ETIMEDOUT,
       (Net.const_defined?(:ReadTimeout) ? Net::ReadTimeout : EOFError),
-      (Net.const_defined?(:OpenTimeout) ? Net::ReadTimeout : EOFError),
+      (Net.const_defined?(:OpenTimeout) ? Net::OpenTimeout : EOFError),
       Net::ProtocolError,
       Errno::ECONNREFUSED,
       Errno::EHOSTDOWN,
