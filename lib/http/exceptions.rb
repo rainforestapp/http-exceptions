@@ -12,6 +12,7 @@ module Http
       Errno::ECONNREFUSED,
       Errno::EHOSTDOWN,
       Errno::ECONNRESET,
+      Errno::ENETUNREACH,
       OpenSSL::SSL::SSLError,
       EOFError,
     ].freeze
