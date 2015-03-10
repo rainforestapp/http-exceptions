@@ -8,30 +8,41 @@ describe Http::Exceptions do
   end
 
   describe ".wrap_exception" do
-    it "raises an HttpException on supported http exceptions" do
-      expect do
-        described_class.wrap_exception do
-          raise SocketError
-        end
-      end.to raise_error(Http::Exceptions::HttpException)
-    end
+    let(:supported_exception_class) { Http::Exceptions::Configuration::DEFAULT_EXCEPTIONS_TO_CONVERT.first }
+    let(:unsupported_exception_class) { TestException }
 
-    it "saves the original exception against the HttpException" do
-      begin
-        described_class.wrap_exception do
-          raise SocketError
+    context "when exception class is supported" do
+      before { expect(Http::Exceptions.configuration.exceptions_to_convert).to include(supported_exception_class) }
+
+      it "raises an HttpException on supported http exceptions" do
+        expect do
+          described_class.wrap_exception do
+            raise supported_exception_class
+          end
+        end.to raise_error(Http::Exceptions::HttpException)
+      end
+
+      it "saves the original exception against the HttpException" do
+        begin
+          described_class.wrap_exception do
+            raise supported_exception_class
+          end
+        rescue Http::Exceptions::HttpException => e
+          expect(e.original_exception).to be_a(supported_exception_class)
         end
-      rescue Http::Exceptions::HttpException => e
-        expect(e.original_exception).to be_a(SocketError)
       end
     end
 
-    it "ignores other exceptions" do
-      expect do
-        described_class.wrap_exception do
-          raise TestException
-        end
-      end.to raise_error(TestException)
+    context "when exception class is NOT supported" do
+      before { expect(Http::Exceptions.configuration.exceptions_to_convert).to_not include(unsupported_exception_class) }
+
+      it "ignores other exceptions" do
+        expect do
+          described_class.wrap_exception do
+            raise unsupported_exception_class
+          end
+        end.to raise_error(unsupported_exception_class)
+      end
     end
   end
 
