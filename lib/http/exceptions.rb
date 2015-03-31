@@ -13,6 +13,7 @@ module Http
       Errno::EHOSTDOWN,
       Errno::ECONNRESET,
       Errno::ENETUNREACH,
+      Errno::EHOSTUNREACH,
       Errno::ECONNABORTED,
       OpenSSL::SSL::SSLError,
       EOFError,
