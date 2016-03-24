@@ -21,3 +21,6 @@ tmp
 *.a
 mkmf.log
 tags
+
+# RubyMine project files
+.idea/
