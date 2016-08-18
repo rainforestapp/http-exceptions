@@ -29,7 +29,7 @@ module Http
     end
 
     def self.check_response!(res)
-      raise HttpException.new(response: res) unless (200...300).include?(res.code)
+      raise HttpException.new(response: res) unless (200...300).include?(res.code.to_i)
       res
     end
 
