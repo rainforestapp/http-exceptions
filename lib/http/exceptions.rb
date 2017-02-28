@@ -4,22 +4,6 @@ require "http/exceptions/http_exception"
 
 module Http
   module Exceptions
-    EXCEPTIONS = [
-      SocketError,
-      Errno::ETIMEDOUT,
-      (Net.const_defined?(:ReadTimeout) ? Net::ReadTimeout : EOFError),
-      (Net.const_defined?(:OpenTimeout) ? Net::OpenTimeout : EOFError),
-      Net::ProtocolError,
-      Errno::ECONNREFUSED,
-      Errno::EHOSTDOWN,
-      Errno::ECONNRESET,
-      Errno::ENETUNREACH,
-      Errno::EHOSTUNREACH,
-      Errno::ECONNABORTED,
-      OpenSSL::SSL::SSLError,
-      EOFError,
-    ].freeze
-
     def self.wrap_exception
       begin
         yield
