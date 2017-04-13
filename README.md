@@ -2,7 +2,7 @@
 
 # Http::Exceptions
 
-Http::Exceptions provides an easy way to rescue exceptions that might be thrown by your Http library.
+Http::Exceptions provides an easy way to rescue exceptions that might be thrown by your Http library. This was developed at Rainforest QA - you can read more in [Introducing Http::Exceptions](https://www.rainforestqa.com/blog/2014-08-15-introducing-http-exceptions/) over on our blog.
 
 If you're using a library such as the excellent [HTTParty](https://github.com/jnunemaker/httparty), you still have to deal with various types of exceptions. In an ideal world, the return code of the HTTP request would be the sole indicator of failures, but HTTP libraries can raise a large number of exceptions (such as `SocketError` or `Net::ReadTimeout`) that you need to handle.
 
