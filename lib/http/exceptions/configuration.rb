@@ -1,3 +1,11 @@
+# frozen_string_literal: true
+
+# Some stdlib need to be required for accessing those error classes
+# Required for bundler 1.14.5
+require "net/http"
+require "openssl"
+require "socket"
+
 module Http
   module Exceptions
     class Configuration
