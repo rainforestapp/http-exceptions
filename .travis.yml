@@ -11,9 +11,6 @@ rvm:
   - 2.3.0
   - ruby-head
 script: bundle exec rspec spec
-# ! Update bundler before running test in Travis to avoid buggy version of bundler
-before_install:
-  - gem update bundler
 matrix:
   fast_finish: true
   allow_failures:
