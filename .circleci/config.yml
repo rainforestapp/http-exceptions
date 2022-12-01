@@ -2,8 +2,11 @@ version: 2.1
 
 jobs:
   test:
+    parameters:
+      ruby:
+        type: string
     docker:
-      - image: cimg/ruby:2.7.4
+      - image: cimg/ruby:<< parameters.ruby >>
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_TOKEN
@@ -53,6 +56,18 @@ workflows:
   test_and_deploy:
     jobs:
       - test:
+          matrix:
+            alias: old-ruby
+            parameters:
+              ruby: ["2.7", "3.0"]
+          filters:
+            tags:
+              only:
+                - /^v.*/
+          context:
+            - DockerHub
+      - test:
+          ruby: "3.1"
           filters:
             tags:
               only:
