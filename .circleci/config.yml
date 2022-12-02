@@ -2,8 +2,11 @@ version: 2.1
 
 jobs:
   test:
+    parameters:
+      ruby:
+        type: string
     docker:
-      - image: cimg/ruby:2.7.4
+      - image: cimg/ruby:<< parameters.ruby >>
         auth:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_TOKEN
@@ -11,7 +14,9 @@ jobs:
       - checkout
       - run:
           name: Install Ruby gems
-          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+          command: |
+            bundle config set --local path vendor/bundle
+            bundle check || bundle install --jobs=4 --retry=3
       - run:
           name: Set up test output directory
           command: sudo install -o circleci -d ~/rspec
@@ -51,6 +56,18 @@ workflows:
   test_and_deploy:
     jobs:
       - test:
+          matrix:
+            alias: old-ruby
+            parameters:
+              ruby: ["2.7", "3.0"]
+          filters:
+            tags:
+              only:
+                - /^v.*/
+          context:
+            - DockerHub
+      - test:
+          ruby: "3.1"
           filters:
             tags:
               only:
@@ -69,3 +86,4 @@ workflows:
                 - /^v.*/
           context:
             - DockerHub
+            - RubyGems
