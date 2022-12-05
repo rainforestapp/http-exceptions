@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["simon.math@gmail.com"]
   spec.summary       = %q{An easy way to rescue exceptions that might be thrown by your Http library}
   spec.description   = %q{An easy way to rescue exceptions that might be thrown by your Http library}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/rainforestapp/http-exceptions"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
