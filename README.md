@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/rainforestapp/http-exceptions.png?branch=master)](https://travis-ci.org/rainforestapp/http-exceptions)
+[![CircleCI](https://circleci.com/gh/rainforestapp/http-exceptions.svg?style=svg)](https://circleci.com/gh/rainforestapp/http-exceptions)
 
 # Http::Exceptions
 
