@@ -59,7 +59,7 @@ workflows:
           matrix:
             alias: old-ruby
             parameters:
-              ruby: ["2.7", "3.0"]
+              ruby: ["2.7", "3.0", "3.1"]
           filters:
             tags:
               only:
@@ -67,7 +67,7 @@ workflows:
           context:
             - DockerHub
       - test:
-          ruby: "3.1"
+          ruby: "3.2"
           filters:
             tags:
               only:
